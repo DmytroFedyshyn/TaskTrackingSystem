@@ -1,6 +1,6 @@
 ﻿namespace TaskTrackingSystem.Models
 {
-    public class Task
+    public class TaskCard
     {
         public int Id { get; set; }
 
