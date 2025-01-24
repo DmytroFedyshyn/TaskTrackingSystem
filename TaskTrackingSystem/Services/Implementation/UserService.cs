@@ -14,10 +14,20 @@ namespace TaskTrackingSystem.Services.Implementation
             _context = context;
         }
 
-        public async Task<User> AuthenticateAsync(string username, string password)
+        public async Task<User?> AuthenticateAsync(string username, string password)
         {
             return await _context.Users
                 .FirstOrDefaultAsync(u => u.Username == username && u.Password == password);
+        }
+
+        async Task<User> IUserService.AuthenticateAsync(string username, string password)
+        {
+            var user = await AuthenticateAsync(username, password);
+            if (user == null)
+            {
+                throw new InvalidOperationException("User not found");
+            }
+            return user;
         }
     }
 }
