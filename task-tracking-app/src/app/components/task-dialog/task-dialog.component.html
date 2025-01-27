@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>{{ data?.task ? 'Edit Task' : 'Create Task' }}</h2>
+<form [formGroup]="form" (ngSubmit)="save()">
+  <mat-form-field>
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <textarea matInput formControlName="description"></textarea>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit">Save</button>
+</form>
