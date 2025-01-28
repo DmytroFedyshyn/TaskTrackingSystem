@@ -1,23 +1,20 @@
 <div class="board">
-    <div class="column" *ngFor="let column of columns">
-      <h2>{{ column.name }}</h2>
+  <div class="column" *ngFor="let column of columns">
+    <h2>{{ column.name }}</h2>
+    <div
+      cdkDropList
+      [cdkDropListData]="column.tasks"
+      class="task-list"
+      (cdkDropListDropped)="onTaskDrop($event)"
+    >
       <div
-        cdkDropList
-        [cdkDropListData]="column.tasks"
-        class="task-list"
-        (cdkDropListDropped)="onTaskDrop($event)"
+        class="task-card"
+        *ngFor="let task of column.tasks"
+        cdkDrag
       >
-        <div
-          class="task-card"
-          *ngFor="let task of column.tasks"
-          cdkDrag
-          (dblclick)="editTask(task)"
-        >
-          <h3>{{ task.title }}</h3>
-          <p>{{ task.description }}</p>
-          <button mat-button color="warn" (click)="deleteTask(task)">Delete</button>
-        </div>
+        <h3>{{ task.title }}</h3>
+        <p>{{ task.description }}</p>
       </div>
     </div>
   </div>
-  <button mat-raised-button color="primary" (click)="addTask()">Add Task</button>
+</div>

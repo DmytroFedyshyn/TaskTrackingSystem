@@ -1,6 +1,14 @@
-import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { AppComponent } from './app/app.component';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MaterialModule } from './app/material.module'
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+
+@Component({
+  selector: 'app-kanban-board',
+  standalone: true,
+  imports: [CommonModule, DragDropModule, MaterialModule],
+  templateUrl: './kanban-board.component.html',
+  styleUrls: ['./kanban-board.component.scss'],
+})
+export class KanbanBoardComponent {}

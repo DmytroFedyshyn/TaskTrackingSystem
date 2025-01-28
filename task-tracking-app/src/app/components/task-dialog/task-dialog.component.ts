@@ -1,9 +1,13 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from '../../material.module';
 
 @Component({
   selector: 'app-task-dialog',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, MaterialModule],
   templateUrl: './task-dialog.component.html',
   styleUrls: ['./task-dialog.component.scss']
 })
